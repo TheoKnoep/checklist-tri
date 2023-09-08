@@ -41,8 +41,6 @@ class List {
 			}
 		}
 
-		console.log(id_of_existing_list); 
-
 		if (id_of_existing_list < 0) {
 			already_saved.push({
 				'items': this.items, 
@@ -71,10 +69,16 @@ class List {
 		return output; 
 	}
 
+	getItemsOfCategory(category) {
+		return this.items.filter(item => {
+			return item.category === category; 
+		})
+	}
+
 	addItem(item) {
 
 	}
-	
+
 	deleteItem(name) {
 		let id = -1; 
 		for (let i in this.items) {

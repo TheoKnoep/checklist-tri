@@ -30,15 +30,8 @@ const order = [
 
 // display elements : 
 order.forEach(category => {
-	let items_of_category = list.items.filter(item => {
-		return item.category === category; 
-	});
-
-	document.querySelector('#app-container').insertAdjacentHTML('beforeend', `<h2>${category}</h2>`); 
-	items_of_category.forEach(item => {
-		item.insert_HTML_Card(document.querySelector('#app-container')); 
-	})
-
+	let categoryList = new CategoryList(category, list.getItemsOfCategory(category)); 
+	categoryList.render(document.querySelector('#app-container')); 
 })
 
 
