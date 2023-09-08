@@ -1,0 +1,3 @@
+# Checklist tri
+
+Petite webapp perso de rappel du matériel pour un triathlon, duathlon, aquathlon...
