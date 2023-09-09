@@ -4,6 +4,7 @@ class Item {
 		this.category = options.category; 
 		this.state = options.state || 0; 
 		this.html_elt = null; 
+		this.id = 'id_' + document.id_counter++; 
 	}
 
 	register() {
@@ -18,7 +19,7 @@ class Item {
 
 
 	insert_HTML_Card($target) {
-		let id = 'id_' + document.id_counter++; 
+		let id = this.id; 
 		let newHtml = this.templateHTMLCard(id); 
 		$target.insertAdjacentHTML('beforeend', newHtml); 
 		this.html_elt = document.querySelector(`#${id}`); 
@@ -48,6 +49,10 @@ class Item {
 	}
 
 	templateHTMLCard(id) {
-		return `<ol id="${id}"><span>${this.name}</span><input type="checkbox" /><button data-role="delete">Supprimer</button></ol>`; 
+		return `<ol id="${id}">
+			<span>${this.name}</span>
+			<input type="checkbox" />
+			<button data-role="delete">Supprimer</button>
+		</ol>`; 
 	}
 }

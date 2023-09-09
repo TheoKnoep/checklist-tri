@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<style>
+			#maListe li {
+				cursor: grab;
+				/* Permet de saisir l'élément pour le déplacement */
+				transition: transform 0.3s ease-in-out;
+				/* Transition de 0.3 secondes en douceur */
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<ul id="maListe">
+			<li id="element1">Élément 1</li>
+			<li id="element2">Élément 2</li>
+			<li id="element3">Élément 3</li>
+			<li id="element4">Élément 4</li>
+		</ul>
+
+
+		<script>
+			let isDragging = false;
+			let dragElement = null;
+			let startPosition = null;
+
+			const liste = document.getElementById("maListe");
+
+			liste.addEventListener("mousedown", (e) => {
+				isDragging = true;
+				dragElement = e.target;
+				startPosition = e.clientY - dragElement.getBoundingClientRect().top;
+				dragElement.style.zIndex = "1000"; // Pour mettre l'élément au-dessus des autres pendant le déplacement
+			});
+
+			document.addEventListener("mousemove", (e) => {
+				if (!isDragging) return;
+				const newPosition = e.clientY - startPosition;
+				dragElement.style.transform = `translateY(${newPosition}px)`;
+			});
+
+			document.addEventListener("mouseup", () => {
+				if (!isDragging) return;
+				isDragging = false;
+				dragElement.style.zIndex = ""; // Rétablir la valeur par défaut
+				dragElement.style.transform = "";
+
+				// Réorganisez la liste en fonction de la nouvelle position de l'élément
+				const elements = Array.from(liste.querySelectorAll("li"));
+				const currentIndex = elements.indexOf(dragElement);
+				const newIndex = Math.floor(currentIndex + (startPosition / dragElement.offsetHeight));
+
+				if (newIndex >= 0 && newIndex < elements.length && newIndex !== currentIndex) {
+					const nextElement = elements[newIndex];
+					liste.insertBefore(dragElement, nextElement);
+				}
+			});
+		</script>
+
+	</body>
+
+</html>

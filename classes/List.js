@@ -75,8 +75,11 @@ class List {
 		})
 	}
 
-	addItem(item) {
-
+	addItem(category, itemName) {
+		this.items.push(new Item({
+			category: category, 
+			name: itemName
+		})); 
 	}
 
 	deleteItem(name) {

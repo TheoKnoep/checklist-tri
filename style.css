@@ -1,0 +1,83 @@
+* {
+	margin: 0; 
+	padding: 0; 
+	box-sizing: border-box; 
+}
+
+:root {
+	--main-background: #fff; 
+	--main-color: #346FC8; 
+	--light-background: #efefef; 
+	--color: #212121; 
+}
+
+html[data-theme='dark'] {
+	--main-background: #fff; 
+	--main-color: #346FC8; 
+	--light-background: #efefef; 
+	--color: #212121; 
+}
+
+body {
+	font-family: sans-serif;
+	background-color: var(--main-background);
+	color: var(--color); 
+}
+
+#app-container {
+	width: 96%; 
+	margin: auto; 
+	max-width: 680px;
+}
+
+.category-block {
+
+}
+
+.category-block h2 {
+	background-color: var(--light-background);
+	padding: 12px; 
+	display: flex;
+	justify-content: space-between;
+	height: 60px;
+    align-items: center;
+}
+
+.category-block h2 button {
+	width: 24px; 
+	height: 24px; 
+	border-radius: 100px;
+}
+
+.category-block .list-items {
+	position: relative; 
+}
+
+.category-block .list-items ol {
+	margin: 12px 0; 
+	padding: 12px; 
+	box-shadow: 1px 1px 18px #00000036;
+	border-radius: 8px; 
+	border-bottom: 4px solid var(--main-color);
+	background-color: var(--main-background);
+	position: absolute;
+	width: 100%;
+    transition: all ease 1200ms;
+	height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.category-block .list-items ol.checked {
+	opacity: .6;
+	box-shadow: 0 0 0 transparent;
+	border: 2px solid var(--light-background);
+	border-bottom-width: 4px;
+}
+.category-block .list-items ol button[data-role="delete"] {
+	margin-right: 12px; 
+}
+.category-block .list-items ol input[data-role="register"] {
+	margin-left: auto; 
+}
+
