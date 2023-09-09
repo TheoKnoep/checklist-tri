@@ -9,7 +9,7 @@ let list = new List({
 
 
 list.initFromLocalSave(); 
-if (list.length === 0) {
+if (list.items.length === 0) {
 	list.initPreset();
 }
 

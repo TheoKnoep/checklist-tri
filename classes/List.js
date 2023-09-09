@@ -9,12 +9,14 @@ class List {
 
 	initFromLocalSave() {
 		let already_saved = JSON.parse(localStorage.getItem('checklist-tri-saves')) || [];
-		already_saved[0].items.forEach(item => {
-			this.items.push(new Item(item)); 
-		})
-		this.title = already_saved[0].title; 
-		this.sport = already_saved[0].sport; 
-		this.date = already_saved[0].date; 
+		if (already_saved.length > 0 ) {
+			already_saved[0].items.forEach(item => {
+				this.items.push(new Item(item)); 
+			})
+			this.title = already_saved[0].title; 
+			this.sport = already_saved[0].sport; 
+			this.date = already_saved[0].date; 
+		}
 	}
 
 	initPreset(sport) {
