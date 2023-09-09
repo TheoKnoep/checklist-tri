@@ -7,8 +7,11 @@ let list = new List({
 	sport: 'triathlon'
 }); 
 
-// list.initPreset(); 
+
 list.initFromLocalSave(); 
+if (list.length === 0) {
+	list.initPreset();
+}
 
 
 
